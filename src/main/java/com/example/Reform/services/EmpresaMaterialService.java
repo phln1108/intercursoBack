@@ -32,6 +32,7 @@ public class EmpresaMaterialService {
         if(empresaMaterialFind.isPresent()){
             EmpresaMaterial empresaMaterialUpdate = empresaMaterialFind.get();
             empresaMaterialUpdate.setQuantidade(empresaMaterial.getQuantidade());
+            empresaMaterialUpdate.setValor(empresaMaterial.getValor());
             return empresaMaterialRepository.save(empresaMaterialUpdate);
         }else {
             throw new RuntimeException("EmpresaMaterial não encontrada com ID:"+id);

@@ -12,6 +12,7 @@ public class EmpresaMaterial implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double quantidade;
+    private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
@@ -41,6 +42,15 @@ public class EmpresaMaterial implements Serializable {
         this.quantidade = quantidade;
     }
 
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }
@@ -68,4 +78,5 @@ public class EmpresaMaterial implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
 }
