@@ -26,6 +26,14 @@ public class EmpresaMaterial implements Serializable {
     public EmpresaMaterial() {
     }
 
+    public EmpresaMaterial(Long id, Double quantidade, Double valor, Empresa empresa, Material material) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.valor = valor;
+        this.empresa = empresa;
+        this.material = material;
+    }
+
     public Long getId() {
         return id;
     }
