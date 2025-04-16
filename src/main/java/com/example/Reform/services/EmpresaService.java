@@ -28,9 +28,9 @@ public class EmpresaService {
     }
 
     public Empresa saveEmpresa(Empresa empresa){
-        Optional<Empresa> empresaExistente = empresaRepository.findByLogin(empresa.getLogin());
+        Optional<Empresa> empresaExistente = empresaRepository.findByCnpj(empresa.getCnpj());
         if (empresaExistente.isPresent()) {
-            throw new RuntimeException("Login já está em uso.");
+            throw new RuntimeException("CNPJ já está em uso.");
         }
 
         empresa.setSenha(passwordEncoder.encode(empresa.getSenha()));
@@ -45,8 +45,14 @@ public class EmpresaService {
             empresaUpdate.setNome(empresa.getNome());
             empresaUpdate.setEmail(empresa.getEmail());
             empresaUpdate.setCnpj(empresa.getCnpj());
-            empresaUpdate.setLogin(empresa.getLogin());
             empresaUpdate.setSenha(empresa.getSenha());
+            empresaUpdate.setLogradouro(empresa.getLogradouro());
+            empresaUpdate.setNumero(empresa.getNumero());
+            empresaUpdate.setComplemento(empresa.getComplemento());
+            empresaUpdate.setCep(empresa.getCep());
+            empresaUpdate.setBairro(empresa.getBairro());
+            empresaUpdate.setMunicipio(empresa.getMunicipio());
+            empresaUpdate.setUf(empresa.getUf());
 
             return empresaRepository.save(empresaUpdate);
 
@@ -59,9 +65,10 @@ public class EmpresaService {
         empresaRepository.deleteById(id);
     }
 
-    public Optional<Empresa> findEmpresaByLogin(String login){
-        return empresaRepository.findByLogin(login);
+    public Optional<Empresa> findEmpresaByCnpj(String cnpj){
+        return empresaRepository.findByCnpj(cnpj);
     }
+
 
 
 }

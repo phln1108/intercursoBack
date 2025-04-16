@@ -1,16 +1,10 @@
 package com.example.Reform.dto;
 
 public class LoginRequest {
-    private String login;
+    private String cnpj;
     private String senha;
 
-    public String getLogin() {
-        return login;
-    }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getSenha() {
         return senha;
@@ -18,5 +12,13 @@ public class LoginRequest {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 }

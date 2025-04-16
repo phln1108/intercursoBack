@@ -25,7 +25,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticationEmpresa(@RequestBody LoginRequest loginRequest){
-        Optional<Empresa> empresaFind = empresaService.findEmpresaByLogin(loginRequest.getLogin());
+        Optional<Empresa> empresaFind = empresaService.findEmpresaByCnpj(loginRequest.getCnpj());
 
         if(empresaFind.isPresent()){
             Empresa empresa = empresaFind.get();
