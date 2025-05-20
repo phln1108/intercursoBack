@@ -18,6 +18,7 @@ public class Empresa implements Serializable {
     private String cnpj;
 
     private String senha;
+    private String telefone;
     private String logradouro;
     private String numero;
     private String complemento;
@@ -36,12 +37,13 @@ public class Empresa implements Serializable {
     public Empresa() {
     }
 
-    public Empresa(Long id, String nome, String email, String cnpj, String senha, String logradouro, String numero, String complemento, String cep, String bairro, String municipio, String uf) {
+    public Empresa(Long id, String nome, String email, String cnpj, String telefone, String senha, String logradouro, String numero, String complemento, String cep, String bairro, String municipio, String uf) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cnpj = cnpj;
         this.senha = senha;
+        this.telefone = telefone;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -83,6 +85,9 @@ public class Empresa implements Serializable {
         this.cnpj = cnpj;
     }
 
+    public String getTelefone(){ return telefone;    }
+
+    public void setTelefone(String telefone){this.telefone = telefone; }
 
     public String getSenha() {
         return senha;

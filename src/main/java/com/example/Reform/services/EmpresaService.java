@@ -45,6 +45,7 @@ public class EmpresaService {
             empresaUpdate.setNome(empresa.getNome());
             empresaUpdate.setEmail(empresa.getEmail());
             empresaUpdate.setCnpj(empresa.getCnpj());
+            empresaUpdate.setTelefone(empresa.getTelefone());
             empresaUpdate.setSenha(empresa.getSenha());
             empresaUpdate.setLogradouro(empresa.getLogradouro());
             empresaUpdate.setNumero(empresa.getNumero());
