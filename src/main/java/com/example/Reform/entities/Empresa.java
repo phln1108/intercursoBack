@@ -1,5 +1,6 @@
 package com.example.Reform.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class Empresa implements Serializable {
     private String municipio;
     private String uf;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "empresa")
     private List<EmpresaMaterial> empresaMaterials;
 

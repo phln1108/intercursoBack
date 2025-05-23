@@ -1,5 +1,6 @@
 package com.example.Reform.controllers;
 
+import com.example.Reform.entities.Empresa;
 import com.example.Reform.entities.EmpresaMaterial;
 import com.example.Reform.services.EmpresaMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,15 @@ public class EmpresaMaterialController {
         return empresaMaterialService.findAllEmpresaMaterialById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    @GetMapping("/empresa/{id}")
+    public ResponseEntity<List<EmpresaMaterial>> getEmpresaMaterialByIdEmpresa(@PathVariable Long id){
+        List<EmpresaMaterial> empresaMaterialList = empresaMaterialService.findMaterialsByEmpresaId(id);
+        if(empresaMaterialList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(empresaMaterialList);
     }
 
     @PostMapping

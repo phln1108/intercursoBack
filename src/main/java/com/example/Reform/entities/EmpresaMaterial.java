@@ -1,5 +1,6 @@
 package com.example.Reform.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ public class EmpresaMaterial implements Serializable {
     private Long id;
     private Double quantidade;
     private Double valor;
+
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
