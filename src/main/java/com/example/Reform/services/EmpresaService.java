@@ -37,6 +37,7 @@ public class EmpresaService {
 
         return empresaRepository.save(empresa);
     }
+
     public Empresa updateEmpresa(Long id, Empresa empresa){
         Optional<Empresa> empresaFind = empresaRepository.findById(id);
 
@@ -69,7 +70,5 @@ public class EmpresaService {
     public Optional<Empresa> findEmpresaByCnpj(String cnpj){
         return empresaRepository.findByCnpj(cnpj);
     }
-
-
 
 }

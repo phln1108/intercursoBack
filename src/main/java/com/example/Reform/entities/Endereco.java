@@ -1,5 +1,6 @@
 package com.example.Reform.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -20,6 +21,7 @@ public class Endereco implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
+    @JsonIgnore
     private Empresa empresa;
 
 

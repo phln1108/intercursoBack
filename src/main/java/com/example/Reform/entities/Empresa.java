@@ -35,7 +35,6 @@ public class Empresa implements Serializable {
     @OneToMany(mappedBy = "empresa")
     private List<Endereco> enderecoList;
 
-
     public Empresa() {
     }
 
