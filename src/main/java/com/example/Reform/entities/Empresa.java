@@ -170,7 +170,6 @@ public class Empresa implements Serializable {
         return enderecoList;
     }
 
-
     public List<EmpresaMaterial> getEmpresaMaterials() {
         return empresaMaterials;
     }
