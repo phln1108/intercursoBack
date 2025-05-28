@@ -27,6 +27,11 @@ public class EmpresaMaterialService {
     }
 
     public EmpresaMaterial saveEmpresaMaterial(EmpresaMaterial empresaMaterial){
+        System.out.println("RECEBIDO:");
+        System.out.println("Nome: " + empresaMaterial.getNome());
+        System.out.println("Descrição: " + empresaMaterial.getDescricao());
+        System.out.println("Categoria: " + empresaMaterial.getCategoria());
+        System.out.println("Empresa ID: " + empresaMaterial.getEmpresa().getId());
         return empresaMaterialRepository.save(empresaMaterial);
     }
 

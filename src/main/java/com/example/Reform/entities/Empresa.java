@@ -1,6 +1,7 @@
 package com.example.Reform.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -28,12 +29,21 @@ public class Empresa implements Serializable {
     private String municipio;
     private String uf;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "empresa")
+    @JsonManagedReference("empresa-material")
     private List<EmpresaMaterial> empresaMaterials;
 
     @OneToMany(mappedBy = "empresa")
+    @JsonManagedReference("empresa-endereco")
     private List<Endereco> enderecoList;
+
+    @OneToMany(mappedBy = "comprador")
+    @JsonManagedReference("comprador-contrato")
+    private List<Contrato> contratosComprador;
+
+    @OneToMany(mappedBy = "vendedor")
+    @JsonManagedReference("vendedor-contrato")
+    private List<Contrato> contratosVendedor;
 
     public Empresa() {
     }

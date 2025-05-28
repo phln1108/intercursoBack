@@ -14,8 +14,8 @@ public class Material implements Serializable {
     private Long id;
     private String tipo;
 
-    @OneToMany(mappedBy = "material")
-    private List<EmpresaMaterial> empresaMaterials;
+//    @OneToMany(mappedBy = "material")
+//    private List<EmpresaMaterial> empresaMaterials;
 
 
     public Material() {

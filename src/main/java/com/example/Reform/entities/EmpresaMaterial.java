@@ -1,6 +1,6 @@
 package com.example.Reform.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,26 +14,26 @@ public class EmpresaMaterial implements Serializable {
     private Long id;
     private Double quantidade;
     private Double valor;
-
+    private String nome;
+    private String categoria;
+    private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
+    @JsonBackReference("empresa-material")
     private Empresa empresa;
-
-    @ManyToOne
-    @JoinColumn(name = "id_material", nullable = false)
-    private Material material;
-
 
     public EmpresaMaterial() {
     }
 
-    public EmpresaMaterial(Long id, Double quantidade, Double valor, Empresa empresa, Material material) {
+    public EmpresaMaterial(Long id, Double quantidade, Double valor, Empresa empresa, String nome, String categoria, String descricao) {
         this.id = id;
         this.quantidade = quantidade;
         this.valor = valor;
         this.empresa = empresa;
-        this.material = material;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.descricao = descricao;
     }
 
     public Long getId() {
@@ -52,7 +52,6 @@ public class EmpresaMaterial implements Serializable {
         this.quantidade = quantidade;
     }
 
-
     public Double getValor() {
         return valor;
     }
@@ -61,20 +60,36 @@ public class EmpresaMaterial implements Serializable {
         this.valor = valor;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public Empresa getEmpresa() {
         return empresa;
     }
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
     }
 
     @Override
@@ -88,5 +103,4 @@ public class EmpresaMaterial implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-
 }

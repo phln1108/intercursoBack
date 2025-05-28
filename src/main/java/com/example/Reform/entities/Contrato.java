@@ -1,5 +1,6 @@
 package com.example.Reform.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,10 +17,12 @@ public class Contrato implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "comprador_id", nullable = false)
+    @JsonBackReference("comprador-contrato")
     private Empresa comprador;
 
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
+    @JsonBackReference("vendedor-contrato")
     private Empresa vendedor;
 
     @ManyToOne
