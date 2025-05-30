@@ -20,6 +20,8 @@ public class Endereco implements Serializable {
     private String municipio;
     private String uf;
 
+    private boolean isMain;
+
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
     @JsonBackReference("empresa-endereco")
@@ -29,7 +31,7 @@ public class Endereco implements Serializable {
     public Endereco() {
     }
 
-    public Endereco(Long id, String logradouro, String numero, String complemento, String cep, String municipio, String bairro, String uf, Empresa empresa) {
+    public Endereco(Long id, String logradouro, String numero, String complemento, String cep, String municipio, String bairro, String uf, Empresa empresa, boolean isMain) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -39,6 +41,7 @@ public class Endereco implements Serializable {
         this.bairro = bairro;
         this.uf = uf;
         this.empresa = empresa;
+        this.isMain = isMain;
     }
 
     @Override
@@ -123,5 +126,13 @@ public class Endereco implements Serializable {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public boolean isMain() {
+        return isMain;
+    }
+
+    public void setMain(boolean main) {
+        isMain = main;
     }
 }

@@ -18,15 +18,15 @@ public class EmpresaMaterialService {
     @Autowired
     private EmpresaService empresaService;
 
-    public List<EmpresaMaterial> findAllEmpresaMaterial(){
+    public List<EmpresaMaterial> findAllEmpresaMaterial() {
         return empresaMaterialRepository.findAll();
     }
 
-    public Optional<EmpresaMaterial> findAllEmpresaMaterialById(Long id){
+    public Optional<EmpresaMaterial> findAllEmpresaMaterialById(Long id) {
         return empresaMaterialRepository.findById(id);
     }
 
-    public EmpresaMaterial saveEmpresaMaterial(EmpresaMaterial empresaMaterial){
+    public EmpresaMaterial saveEmpresaMaterial(EmpresaMaterial empresaMaterial) {
         System.out.println("RECEBIDO:");
         System.out.println("Nome: " + empresaMaterial.getNome());
         System.out.println("Descrição: " + empresaMaterial.getDescricao());
@@ -35,27 +35,30 @@ public class EmpresaMaterialService {
         return empresaMaterialRepository.save(empresaMaterial);
     }
 
-    public EmpresaMaterial updateEmpresaMaterial(Long id, EmpresaMaterial empresaMaterial){
+    public EmpresaMaterial updateEmpresaMaterial(Long id, EmpresaMaterial empresaMaterial) {
         Optional<EmpresaMaterial> empresaMaterialFind = empresaMaterialRepository.findById(id);
 
-        if(empresaMaterialFind.isPresent()){
-            EmpresaMaterial empresaMaterialUpdate = empresaMaterialFind.get();
-            empresaMaterialUpdate.setQuantidade(empresaMaterial.getQuantidade());
-            empresaMaterialUpdate.setValor(empresaMaterial.getValor());
-            return empresaMaterialRepository.save(empresaMaterialUpdate);
-        }else {
-            throw new RuntimeException("EmpresaMaterial não encontrada com ID:"+id);
+        if (!empresaMaterialFind.isPresent()) {
+            throw new RuntimeException("EmpresaMaterial não encontrada com ID:" + id);
         }
+        EmpresaMaterial empresaMaterialUpdate = empresaMaterialFind.get();
+
+        empresaMaterialUpdate.setCategoria(empresaMaterial.getCategoria());
+        empresaMaterialUpdate.setDescricao(empresaMaterial.getDescricao());
+        empresaMaterialUpdate.setNome(empresaMaterial.getNome());
+        empresaMaterialUpdate.setQuantidade(empresaMaterial.getQuantidade());
+        empresaMaterialUpdate.setValor(empresaMaterial.getValor());
+        return empresaMaterialRepository.save(empresaMaterialUpdate);
     }
 
-    public List<EmpresaMaterial> findMaterialsByEmpresaId(Long id){
-       Empresa empresa = empresaService.findEmpresaById(id)
-               .orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
+    public List<EmpresaMaterial> findMaterialsByEmpresaId(Long id) {
+        Empresa empresa = empresaService.findEmpresaById(id)
+                .orElseThrow(() -> new RuntimeException("Empresa não encontrada"));
 
         return empresaMaterialRepository.findByEmpresa(empresa);
     }
 
-    public void deleteEmpresaMaterialById(Long id){
+    public void deleteEmpresaMaterialById(Long id) {
         empresaMaterialRepository.deleteById(id);
     }
 }

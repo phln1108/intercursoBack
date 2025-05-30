@@ -1,5 +1,6 @@
 package com.example.Reform.controllers;
 
+import com.example.Reform.Form.CreateEmpresaForm;
 import com.example.Reform.entities.Empresa;
 import com.example.Reform.repositories.EmpresaRepository;
 import com.example.Reform.services.EmpresaService;
@@ -36,8 +37,9 @@ public class EmpresaController {
     }
 
     @PostMapping
-    public ResponseEntity<Empresa> createEmpresa(@RequestBody Empresa empresa){
-        Empresa empresaCreated = empresaService.saveEmpresa(empresa);
+    public ResponseEntity<Empresa> createEmpresa(@RequestBody CreateEmpresaForm empresa){
+
+        Empresa empresaCreated = empresaService.createEmpresa(empresa);
         return ResponseEntity.status(HttpStatus.CREATED).body(empresaCreated);
     }
 

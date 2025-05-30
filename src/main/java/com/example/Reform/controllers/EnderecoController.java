@@ -56,4 +56,14 @@ public class EnderecoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PatchMapping("/{id}/main")
+    public ResponseEntity<Endereco> setEnderecoMain(@PathVariable Long id) {
+        try {
+            Endereco endereco = enderecoService.setEnderecoMain(id);
+            return ResponseEntity.ok(endereco);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
